@@ -15,8 +15,10 @@ class LandingPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          smallIntro(),
-          calculateEmiCta(),
+          Center(child: smallIntro()),
+          SizedBox(
+            height: 15.0,
+          ),
           emiInfo(),
         ],
       ),
@@ -53,27 +55,10 @@ Widget smallIntro() {
   );
 }
 
-Widget calculateEmiCta() {
-  return Container(
-    margin: EdgeInsets.symmetric(vertical: 20.0),
-    child: RaisedButton(
-      color: kCalculateColor,
-      onPressed: () {},
-      child: Text(
-        kCalculateCta,
-        style: TextStyle(
-          color: kCalculateTextColor,
-          fontSize: 15.0,
-        ),
-      ),
-    ),
-  );
-}
-
 Widget emiInfo() {
   return Container(
     width: 500.0,
-    height: 350.0,
+    height: 380.0,
     child: Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -114,17 +99,38 @@ Widget emiInfo() {
             SizedBox(
               height: 20.0,
             ),
-            RaisedButton(
-              color: kMoreInfoBackground,
-              onPressed: () {
-                launch(
-                    'https://www.investopedia.com/terms/e/equated_monthly_installment.asp');
-              },
-              child: Text(
-                kMoreInfoText,
-                style: GoogleFonts.openSans(textStyle: TextStyle()),
-              ),
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                RaisedButton(
+                  color: kMoreInfoBackground,
+                  onPressed: () {
+                    launch(
+                        'https://www.investopedia.com/terms/e/equated_monthly_installment.asp');
+                  },
+                  child: Text(
+                    kMoreInfoText,
+                    style: GoogleFonts.openSans(textStyle: TextStyle()),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 20.0),
+                  child: RaisedButton(
+                    color: kCalculateColor,
+                    onPressed: () {},
+                    child: Text(
+                      kCalculateCta,
+                      style: GoogleFonts.openSans(
+                        textStyle: TextStyle(
+                          // color: kCalculateTextColor,
+                          fontSize: 15.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
